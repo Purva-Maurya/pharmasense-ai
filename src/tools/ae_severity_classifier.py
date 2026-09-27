@@ -29,5 +29,7 @@ def ae_severity_classifier_tool(event_term: str, severity: str, seriousness: str
             "In two sentences, explain this decision in plain language for a "
             "clinical ops manager. Do not change the decision."
         )
-        result["explanation"] = call_llm(prompt, agent="ae_triage", max_tokens=150)
+        result["explanation"] = call_llm(prompt, agent="ae_triage", max_tokens=500)
+        if not result["explanation"].strip():
+            result["explanation"] = "(No explanation generated; see rule_reason above.)"
     return result

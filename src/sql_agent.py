@@ -22,6 +22,8 @@ Tables (all read-only):
   lead_scientist, synthesis_date)
 - clinical_trials(trial_id PK, compound_id FK, trial_phase, therapeutic_area, status,
   target_enrollment, actual_enrollment, start_date, actual_end_date, ...)
+    Exact status values (case-sensitive): 'Recruiting', 'Active (not recruiting)',
+  'Completed', 'Terminated', 'Suspended'.
 - v_trial_enrollment(trial_id, compound_id, trial_phase, therapeutic_area, status,
   target_enrollment, actual_enrollment, enrollment_pct)  -- use this view for enrollment %
 - trial_sites(site_id PK, trial_id FK, enrollment_count, principal_investigator, ...)
@@ -38,9 +40,10 @@ def answer_sql_question(question: str):
     sql_prompt = (
         f"{SCHEMA_SUMMARY}\n"
         f"Write ONE read-only DuckDB SELECT query (no semicolon) that answers:\n"
-        f"\"{question}\"\nReply with ONLY the SQL query, nothing else."
+        f"\"{question}\"\nThis is a simple lookup — answer immediately with no explanation. "
+        "Reply with ONLY the SQL query and nothing else, not even a code fence."
     )
-    sql = call_llm(sql_prompt, agent="sql_agent", temperature=0.0).strip()
+    sql = call_llm(sql_prompt, agent="sql_agent", temperature=0.0, max_tokens=2048).strip()
     sql =_clean_sql(sql)
     print("DEBUG SQL:", repr(sql))   # remove once this is working reliably
 
@@ -52,7 +55,9 @@ def answer_sql_question(question: str):
         "Answer the question in 2-4 sentences using only this result. "
         "Mention the SQL result count where relevant."
     )
-    answer = call_llm(explain_prompt, agent="sql_agent")
+    answer = call_llm(explain_prompt, agent="sql_agent", max_tokens=1000)
+    if not answer or not answer.strip():
+        answer = f"(No explanation generated. Raw result: {result['rows'][:5]})"
     return {"answer": answer, "sql": sql, "result": result}
 
 

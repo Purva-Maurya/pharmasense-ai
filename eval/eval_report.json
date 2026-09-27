@@ -1,0 +1,226 @@
+{
+  "summary": {
+    "total_questions": 24,
+    "errors": 0,
+    "explicit_pass_checks_passed": 10,
+    "avg_faithfulness_0to2": 1.92,
+    "avg_relevance_0to2": 2.0,
+    "avg_latency_s": 4.87
+  },
+  "results": [
+    {
+      "id": "SQL-01",
+      "type": "sql",
+      "answer": "Only one Phase\u202fII oncology trial is currently below 60\u202f% enrollment.  \nThe trial is **TRL\u20110037** (compound CMP\u20110055), which is \u201cActive, not recruiting\u201d and has an enrollment rate of **40.5\u202f%**.  \nThe SQL query returned a single qualifying record (count\u202f=\u202f1).",
+      "context": "[{'trial_id': 'TRL-0037', 'compound_id': 'CMP-0055', 'status': 'Active, not recruiting', 'enrollment_pct': 40.5}]",
+      "latency_s": 2.02,
+      "faithfulness": null,
+      "relevance": null,
+      "reason": "judge call failed: BadRequestError",
+      "keyword_hit": false
+    },
+    {
+      "id": "SQL-02",
+      "type": "sql",
+      "answer": "There are 27 trials currently in Recruiting status. This number comes directly from the SQL query that counted all records where the status field equals \u201cRecruiting,\u201d returning a count of 27.",
+      "context": "[{'count_star()': 27}]",
+      "latency_s": 0.97,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that there are 27 trials in Recruiting status, directly matching the provided context value of count_star() = 27, and it directly answers the question."
+    },
+    {
+      "id": "SQL-03",
+      "type": "sql",
+      "answer": "The SQL query returned a count of **43** serious adverse events in total (Result\u2011001). This indicates that 43 events were flagged as serious in the adverse_events dataset.",
+      "context": "[{'count_star()': 43}]",
+      "latency_s": 1.34,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant\u2019s answer correctly states the count of 43 serious adverse events, which matches the provided context. It directly addresses the question without adding unsupported information."
+    },
+    {
+      "id": "SQL-04",
+      "type": "sql",
+      "answer": "The compound with the highest toxicity score is **SNF\u20111118**, which has a toxicity score of **0.622**. The SQL query returned a single row, indicating that only one compound met the criteria for the top toxicity score in the dataset. This result is based on the provided query output (1 row).",
+      "context": "[{'compound_name': 'SNF-1118', 'toxicity_score': 0.622}]",
+      "latency_s": 1.16,
+      "faithfulness": 1,
+      "relevance": 2,
+      "reason": "The assistant correctly identifies SNF\u20111118 as the compound with the highest toxicity score of 0.622, which is supported by the provided context. However, the statement about an SQL query returning a single row is not directly supported by the context and is a minor unsupported detail. The answer directly addresses the question, so relevance is 2."
+    },
+    {
+      "id": "SQL-05",
+      "type": "sql",
+      "answer": "Compound CMP\u20110012 is currently involved in **two** clinical trials.  \nThe SQL query `SELECT COUNT(*) FROM clinical_trials WHERE compound_id = 'CMP-0012'` returned a count of 2 (TRL\u2011001).",
+      "context": "[{'count_star()': 2}]",
+      "latency_s": 1.08,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that CMP\u20110012 has two trials, matching the provided context count of 2, and does not add any unsupported information.",
+      "keyword_hit": true
+    },
+    {
+      "id": "SQL-06",
+      "type": "sql",
+      "answer": "The query returned 10 terminated trials. They are:\n\n- TRL\u20110003 (CMP\u20110006, Phase\u202fI, Respiratory)  \n- TRL\u20110039 (CMP\u20110056, Phase\u202fIII, Oncology)  \n- TRL\u20110059 (CMP\u20110080, Phase\u202fIII, Immunology)  \n- TRL\u20110084 (CMP\u20110121, Phase\u202fIII, Oncology)  \n- TRL\u20110100 (CMP\u20110137, Phase\u202fII, Respiratory)  \n- TRL\u20110102 (CMP\u20110138, Phase\u202fIII, Oncology)  \n- TRL\u20110105 (CMP\u20110141, Phase\u202fII, Cardiology)  \n- TRL\u20110107 (CMP\u20110143, Phase\u202fI, Metabolic Disease)  \n- TRL\u20110108 (CMP\u20110147, Phase\u202fI, Metabolic Disease)  \n\nThese are all the trials whose status is \u201cTerminated\u201d in the database (10 records in total)\u3010Result\u3011.",
+      "context": "[{'trial_id': 'TRL-0003', 'compound_id': 'CMP-0006', 'trial_phase': 'Phase I', 'therapeutic_area': 'Respiratory', 'sponsor': 'PharmaSense Oncology Division', 'start_date': Timestamp('2022-02-28 00:00:00'), 'planned_end_date': Timestamp('2023-07-02 00:00:00'), 'actual_end_date': Timestamp('2022-06-12 00:00:00'), 'status': 'Terminated', 'target_enrollment': 44, 'actual_enrollment': 23, 'primary_endpoint': 'Reduction in LDL Cholesterol'}, {'trial_id': 'TRL-0039', 'compound_id': 'CMP-0056', 'trial_phase': 'Phase III', 'therapeutic_area': 'Oncology', 'sponsor': 'PharmaSense Oncology Division', 'start_date': Timestamp('2025-11-29 00:00:00'), 'planned_end_date': Timestamp('2028-01-31 00:00:00'), 'actual_end_date': Timestamp('2026-07-30 00:00:00'), 'status': 'Terminated', 'target_enrollment': 550, 'actual_enrollment': 118, 'primary_endpoint': 'Progression-Free Survival (PFS)'}, {'trial_id': 'TRL-0059', 'compound_id': 'CMP-0080', 'trial_phase': 'Phase III', 'therapeutic_area': 'Immunology', 'sponsor': 'PharmaSense Neuroscience Unit', 'start_date': Timestamp('2025-05-29 00:00:00'), 'planned_end_date': Timestamp('2026-11-13 00:00:00'), 'actual_end_date': Timestamp('2025-09-23 00:00:00'), 'status': 'Terminated', 'target_enrollment': 336, 'actual_enrollment': 164, 'primary_endpoint': 'Reduction in LDL Cholesterol'}, {'trial_id': 'TRL-0084', 'compound_id': 'CMP-0121', 'trial_phase': 'Phase III', 'therapeutic_area': 'Oncology', 'sponsor': 'PharmaSense Oncology Division', 'start_date': Timestamp('2025-02-17 00:00:00'), 'planned_end_date': Timestamp('2026-07-23 00:00:00'), 'actual_end_date': Timestamp('2026-02-10 00:00:00'), 'status': 'Terminated', 'target_enrollment': 279, 'actual_enrollment': 58, 'primary_endpoint': 'ACR20 Response Rate'}, {'trial_id': 'TRL-0100', 'compound_id': 'CMP-0137', 'trial_phase': 'Phase II', 'therapeutic_area': 'Respiratory', 'sponsor': 'PharmaSense Therapeutics', 'start_date': Timestamp('2023-03-14 00:00:00'), 'planned_end_date': Timestamp('2024-10-22 00:00:00'), 'actual_end_date': Timestamp('2023-11-10 00:00:00'), 'status': 'Terminated', 'target_enrollment': 455, 'actual_enrollment': 250, 'primary_endpoint': 'Time to Symptom Resolution'}, {'trial_id': 'TRL-0102', 'compound_id': 'CMP-0138', 'trial_phase': 'Phase III', 'therapeutic_area': 'Oncology', 'sponsor': 'PharmaSense Therapeutics', 'start_date': Timestamp('2024-06-18 00:00:00'), 'planned_end_date': Timestamp('2025-02-21 00:00:00'), 'actual_end_date': Timestamp('2024-10-22 00:00:00'), 'status': 'Terminated', 'target_enrollment': 123, 'actual_enrollment': 25, 'primary_endpoint': 'Safety and Tolerability (MTD)'}, {'trial_id': 'TRL-0105', 'compound_id': 'CMP-0141', 'trial_phase': 'Phase II', 'therapeutic_area': 'Cardiology', 'sponsor': 'PharmaSense Global R&D', 'start_date': Timestamp('2025-01-15 00:00:00'), 'planned_end_date': Timestamp('2027-03-20 00:00:00'), 'actual_end_date': Timestamp('2025-09-25 00:00:00'), 'status': 'Terminated', 'target_enrollment': 349, 'actual_enrollment': 66, 'primary_endpoint': 'Progression-Free Survival (PFS)'}, {'trial_id': 'TRL-0107', 'compound_id': 'CMP-0143', 'trial_phase': 'Phase I', 'therapeutic_area': 'Metabolic Disease', 'sponsor': 'PharmaSense Oncology Division', 'start_date': Timestamp('2026-04-09 00:00:00'), 'planned_end_date': Timestamp('2027-01-31 00:00:00'), 'actual_end_date': Timestamp('2026-07-14 00:00:00'), 'status': 'Terminated', 'target_enrollment': 315, 'actual_enrollment': 109, 'primary_endpoint': 'Safety and Tolerability (MTD)'}, {'trial_id': 'TRL-0108', 'compound_id': 'CMP-0147', 'trial_phase': 'Phase I', 'therapeutic_area': 'Metabolic Disease', 'sponsor': 'PharmaSense Therapeutics', 'start_date': Timestamp('2024-02-18 00:00:00'), 'planned_end_date': Timestamp('2026-05-01 00:00:00'), 'actual_end_date': Timestamp('2025-02-19 00:00:00'), 'status': 'Terminated', 'target_enrollment': 303, 'actual_enrollment': 97, 'primary_endpoint': 'Change in HbA1c from Baseline'}]",
+      "latency_s": 9.35,
+      "faithfulness": null,
+      "relevance": null,
+      "reason": "judge call failed: BadRequestError"
+    },
+    {
+      "id": "SQL-07",
+      "type": "sql",
+      "answer": "The average enrollment percentage across all Phase\u202fIII trials is approximately **65.49\u202f%**.  \nThis figure comes from the single row returned by the query, which calculated the mean enrollment percentage for all Phase\u202fIII studies (Result\u2011001).",
+      "context": "[{'avg_enrollment_pct': 65.48709677419356}]",
+      "latency_s": 7.58,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly reports the average enrollment percentage (65.49%) derived from the provided context and directly answers the question without adding unsupported information."
+    },
+    {
+      "id": "RAG-01",
+      "type": "rag",
+      "answer": "Our internal research documents do not mention cardiotoxicity associated with JAK2 inhibitors.",
+      "context": "['Literature Review: AGN-1045 - May 2024\\nTarget: JAK2. Area: Cardiology.\\nA meta-analysis of Cardiology trials targeting JAK2 found that progression-free survival improved in 63% of studies reviewed, though Myalgia was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the AGN-1045 clinical development plan.', 'Literature Review: VLX-1000 - Jun 2024\\nTarget: JAK2. Area: Neurology.\\nRecent literature on JAK2 inhibitors highlights growing interest in Neurology indications. Several published studies report that selective JAK2 modulation can reduce Pyrexia-related toxicity relative to first-generation agents. This supports continued investment in the VLX-1000 program, particularly given its selective inhibitor of jak2, blocking downstream proliferative signaling', 'Literature Review: PSA-1149 - Apr 2024\\nTarget: JAK2. Area: Metabolic Disease.\\nA meta-analysis of Metabolic Disease trials targeting JAK2 found that progression-free survival improved in 35% of studies reviewed, though Cough was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the PSA-1149 clinical development plan.', 'Literature Review: DKU-1132 - Jul 2026\\nTarget: JAK2. Area: Infectious Disease.\\nA meta-analysis of Infectious Disease trials targeting JAK2 found that biomarker response improved in 70% of studies reviewed, though Fatigue was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the DKU-1132 clinical development plan.', 'Literature Review: DKU-1132 - Jul 2026\\nTarget: JAK2. Area: Infectious Disease.\\nA meta-analysis of Infectious Disease trials targeting JAK2 found that biomarker response improved in 46% of studies reviewed, though Cough was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the DKU-1132 clinical development plan.']",
+      "latency_s": 12.56,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that none of the provided literature reviews mention cardiotoxicity for JAK2 inhibitors, which is fully supported by the context. The answer directly addresses the question about cardiotoxicity.",
+      "keyword_hit": true
+    },
+    {
+      "id": "RAG-02",
+      "type": "rag",
+      "answer": "All regulatory briefings indicate that the hERG screening results were within acceptable limits.  \n- DKU\u20111085 (HER2, Immunology) \u2013 hERG within acceptable limits. [DOC-00072]  \n- SNF\u20111014 (ALK, Cardiology) \u2013 hERG within acceptable limits. [DOC-00028]  \n- SNF\u20111028 (HER2, Oncology) \u2013 hERG within acceptable limits. [DOC-00099]  \n- DKU\u20111009 (SGLT2, Oncology) \u2013 hERG within acceptable limits. [DOC-00181]  \n- SNF\u20111012 (IL\u20116R, Oncology) \u2013 hERG within acceptable limits. [DOC-00096]",
+      "context": "['Regulatory Briefing: DKU-1085 - Jun 2024\\nTarget: HER2. Area: Immunology.\\nRegulatory briefing document for DKU-1085: summary of nonclinical and clinical safety data supporting the Preclinical submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Immunology population prior to advancing to the next phase.', 'Regulatory Briefing: SNF-1014 - Jan 2025\\nTarget: ALK. Area: Cardiology.\\nRegulatory briefing document for SNF-1014: summary of nonclinical and clinical safety data supporting the Phase II submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Cardiology population prior to advancing to the next phase.', 'Regulatory Briefing: SNF-1028 - Nov 2025\\nTarget: HER2. Area: Oncology.\\nRegulatory briefing document for SNF-1028: summary of nonclinical and clinical safety data supporting the Phase II submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Oncology population prior to advancing to the next phase.', 'Regulatory Briefing: DKU-1009 - Jul 2026\\nTarget: SGLT2. Area: Oncology.\\nRegulatory briefing document for DKU-1009: summary of nonclinical and clinical safety data supporting the Discovery submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Oncology population prior to advancing to the next phase.', 'Regulatory Briefing: SNF-1012 - Jan 2024\\nTarget: IL-6R. Area: Oncology.\\nRegulatory briefing document for SNF-1012: summary of nonclinical and clinical safety data supporting the Discovery submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Oncology population prior to advancing to the next phase.']",
+      "latency_s": 6.71,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant accurately states that all regulatory briefings report hERG screening results within acceptable limits, matching each context entry, and directly addresses the question."
+    },
+    {
+      "id": "RAG-03",
+      "type": "rag",
+      "answer": "The provided context does not contain any information about dose\u2011limiting toxicities for VLX\u20111000.",
+      "context": "['Lab Notebook Entry: VLX-1075 - Dec 2025\\nTarget: ALK. Area: Metabolic Disease.\\nFollow-up assay for VLX-1075: repeated Cell Viability Assay in triplicate to confirm prior result of moderate cytotoxicity at high dose. Variance was higher than expected (>20%). VLX-1075 remains a watchlist candidate for the Metabolic Disease program pending formulation optimization.', 'Lab Notebook Entry: VLX-1015 - Jul 2026\\nTarget: PCSK9. Area: Neurology.\\nFollow-up assay for VLX-1015: repeated Metabolic Stability (Microsomal) in triplicate to confirm prior result of moderate cytotoxicity at high dose. Variance was higher than expected (>20%). VLX-1015 remains a backup candidate for the Neurology program pending in vivo follow-up.', 'Lab Notebook Entry: VLX-1065 - Feb 2026\\nTarget: BRAF. Area: Infectious Disease.\\nFollow-up assay for VLX-1065: repeated Enzymatic Inhibition Assay in triplicate to confirm prior result of moderate cytotoxicity at high dose. Variance was higher than expected (>20%). VLX-1065 remains a backup candidate for the Infectious Disease program pending formulation optimization.', 'Regulatory Briefing: VLX-1065 - Dec 2024\\nTarget: BRAF. Area: Infectious Disease.\\nRegulatory briefing document for VLX-1065: summary of nonclinical and clinical safety data supporting the Discovery submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Infectious Disease population prior to advancing to the next phase.', 'Regulatory Briefing: VLX-1054 - Aug 2024\\nTarget: KRAS G12C. Area: Oncology.\\nRegulatory briefing document for VLX-1054: summary of nonclinical and clinical safety data supporting the Phase II submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Oncology population prior to advancing to the next phase.']",
+      "latency_s": 6.66,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly notes that the context contains no mention of VLX\u20111000 dose\u2011limiting toxicities.",
+      "keyword_hit": false
+    },
+    {
+      "id": "RAG-04",
+      "type": "rag",
+      "answer": "No literature on SGLT2 compounds and metabolic disease is present in the provided context.",
+      "context": "['Lab Notebook Entry: SNF-1107 - Mar 2025\\nTarget: SGLT2. Area: Metabolic Disease.\\nFollow-up assay for SNF-1107: repeated Pharmacokinetic (PK) Study in triplicate to confirm prior result of strong target engagement. Variance was low (<10%). SNF-1107 remains a watchlist candidate for the Metabolic Disease program pending in vivo follow-up.', 'Regulatory Briefing: DKU-1048 - Apr 2026\\nTarget: SGLT2. Area: Metabolic Disease.\\nRegulatory briefing document for DKU-1048: summary of nonclinical and clinical safety data supporting the Preclinical submission. hERG and genotoxicity screens were within acceptable limits. Agency feedback requested additional PK data in the Metabolic Disease population prior to advancing to the next phase.', 'Literature Review: AGN-1104 - Feb 2024\\nTarget: SGLT2. Area: Infectious Disease.\\nA meta-analysis of Infectious Disease trials targeting SGLT2 found that progression-free survival improved in 53% of studies reviewed, though Hypertension was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the AGN-1104 clinical development plan.', 'Literature Review: AGN-1104 - Jul 2024\\nTarget: SGLT2. Area: Infectious Disease.\\nA meta-analysis of Infectious Disease trials targeting SGLT2 found that symptom control improved in 49% of studies reviewed, though Injection Site Reaction was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the AGN-1104 clinical development plan.', 'Lab Notebook Entry: SNF-1092 - Feb 2026\\nTarget: KRAS G12C. Area: Metabolic Disease.\\nFollow-up assay for SNF-1092: repeated Cell Viability Assay in triplicate to confirm prior result of no significant activity. Variance was higher than expected (>20%). SNF-1092 remains a backup candidate for the Metabolic Disease program pending formulation optimization.']",
+      "latency_s": 3.6,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that no literature review on SGLT2 compounds in metabolic disease is present in the provided context, which is supported by the fact that the only literature entries refer to infectious disease. The answer directly addresses the question."
+    },
+    {
+      "id": "RAG-05",
+      "type": "rag",
+      "answer": "The provided SOP deviation reports do not contain any information about lab safety procedures.",
+      "context": "['SOP Deviation Report: VLX-1123 - Nov 2025\\nTarget: mTOR. Area: Oncology.\\nSOP deviation report: during Selectivity Panel for VLX-1123, a temperature excursion was noted in the incubation step. Root cause: equipment calibration overdue. Corrective action: recalibrate and re-run affected samples. Impact to data integrity assessed as minimal.', 'SOP Deviation Report: VLX-1071 - Dec 2024\\nTarget: HER2. Area: Infectious Disease.\\nSOP deviation report: during Selectivity Panel for VLX-1071, a temperature excursion was noted in the incubation step. Root cause: equipment calibration overdue. Corrective action: recalibrate and re-run affected samples. Impact to data integrity assessed as minimal.', 'SOP Deviation Report: PSA-1057 - Jul 2024\\nTarget: NLRP3. Area: Infectious Disease.\\nSOP deviation report: during Selectivity Panel for PSA-1057, a temperature excursion was noted in the incubation step. Root cause: equipment calibration overdue. Corrective action: recalibrate and re-run affected samples. Impact to data integrity assessed as minimal.', 'SOP Deviation Report: PSA-1057 - Apr 2025\\nTarget: NLRP3. Area: Infectious Disease.\\nSOP deviation report: during Selectivity Panel for PSA-1057, a temperature excursion was noted in the incubation step. Root cause: equipment calibration overdue. Corrective action: recalibrate and re-run affected samples. Impact to data integrity assessed as minimal.', 'SOP Deviation Report: PSA-1055 - Aug 2024\\nTarget: mTOR. Area: Oncology.\\nSOP deviation report: during Solubility Assay for PSA-1055, a temperature excursion was noted in the incubation step. Root cause: equipment calibration overdue. Corrective action: recalibrate and re-run affected samples. Impact to data integrity assessed as minimal.']",
+      "latency_s": 6.61,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that none of the provided SOP deviation reports mention lab safety procedures, which is fully supported by the context. The answer directly addresses the question."
+    },
+    {
+      "id": "RAG-06",
+      "type": "rag",
+      "answer": "The provided documents do not report any respiratory\u2011system side effects for the compounds discussed.",
+      "context": "[\"Conference Abstract: AGN-1122 - Jan 2026\\nTarget: NLRP3. Area: Respiratory.\\nConference abstract: 'AGN-1122 demonstrates durable efficacy in Respiratory: results from N/A.' Presented findings show a statistically significant benefit with a manageable safety profile; most common adverse event was Decreased Appetite (Moderate, self-limited).\", \"Conference Abstract: DKU-1070 - Apr 2024\\nTarget: HER2. Area: Respiratory.\\nConference abstract: 'DKU-1070 demonstrates durable efficacy in Respiratory: results from TRL-0050.' Presented findings show a statistically significant benefit with a manageable safety profile; most common adverse event was Myalgia (Moderate, self-limited).\", \"Conference Abstract: RX-1025 - Aug 2025\\nTarget: SGLT2. Area: Respiratory.\\nConference abstract: 'RX-1025 demonstrates durable efficacy in Respiratory: results from TRL-0017.' Presented findings show a clinically meaningful benefit with a manageable safety profile; most common adverse event was Insomnia (Severe, self-limited).\", 'Literature Review: SNF-1102 - Aug 2025\\nTarget: JAK2. Area: Respiratory.\\nA meta-analysis of Respiratory trials targeting JAK2 found that symptom control improved in 67% of studies reviewed, though Pyrexia was the most commonly reported dose-limiting toxicity. These findings are directly relevant to the SNF-1102 clinical development plan.', \"Conference Abstract: RX-1051 - May 2024\\nTarget: EGFR. Area: Respiratory.\\nConference abstract: 'RX-1051 demonstrates promising efficacy in Respiratory: results from TRL-0034.' Presented findings show a clinically meaningful benefit with a manageable safety profile; most common adverse event was Pyrexia (Moderate, self-limited).\"]",
+      "latency_s": 6.67,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "The assistant correctly states that none of the listed adverse events are respiratory side effects, which is fully supported by the provided context. The answer directly addresses the question."
+    },
+    {
+      "id": "RAG-07",
+      "type": "rag",
+      "answer": "Yes. Cardiotoxicity findings have been documented for several compounds:\n\n- PSA\u20111008 was found to inhibit hERG at 6.7\u202f\u00b5M, showing dose\u2011dependent inhibition [DOC-00250].\n- SNF\u20111126 was tested in triplicate and showed no significant hERG activity [DOC-00196].\n- PSA\u20111133 was also tested in triplicate and showed no significant hERG activity [DOC-00155].",
+      "context": "['Lab Notebook Entry: PSA-1008 - Sep 2025\\nTarget: ALK. Area: Respiratory.\\nRan hERG Cardiotoxicity Screen on PSA-1008 (ALK program) at 6.7 uM concentration. Observed dose-dependent inhibition. Compared to reference compound, PSA-1008 showed modestly improved activity. Recommend formulation optimization.', 'Lab Notebook Entry: SNF-1126 - Dec 2024\\nTarget: TNF-alpha. Area: Metabolic Disease.\\nFollow-up assay for SNF-1126: repeated hERG Cardiotoxicity Screen in triplicate to confirm prior result of no significant activity. Variance was moderate (10-20%). SNF-1126 remains a backup candidate for the Metabolic Disease program pending structural analog screening.', 'Lab Notebook Entry: PSA-1133 - Oct 2025\\nTarget: ALK. Area: Cardiology.\\nFollow-up assay for PSA-1133: repeated hERG Cardiotoxicity Screen in triplicate to confirm prior result of no significant activity. Variance was low (<10%). PSA-1133 remains a high-priority candidate for the Cardiology program pending structural analog screening.', 'Lab Notebook Entry: DKU-1063 - Apr 2024\\nTarget: TNF-alpha. Area: Cardiology.\\nFollow-up assay for DKU-1063: repeated Solubility Assay in triplicate to confirm prior result of no significant activity. Variance was low (<10%). DKU-1063 remains a backup candidate for the Cardiology program pending scale-up synthesis.', 'Lab Notebook Entry: DKU-1074 - Nov 2023\\nTarget: GLP-1R. Area: Cardiology.\\nFollow-up assay for DKU-1074: repeated Enzymatic Inhibition Assay in triplicate to confirm prior result of no significant activity. Variance was higher than expected (>20%). DKU-1074 remains a high-priority candidate for the Cardiology program pending in vivo follow-up.']",
+      "latency_s": 6.79,
+      "faithfulness": 2,
+      "relevance": 2,
+      "reason": "All claims are supported by the provided context and directly answer the question."
+    },
+    {
+      "id": "AE-01",
+      "type": "ae_triage",
+      "answer": "{'escalate': False, 'rule_reason': 'Does not meet serious/severe-and-related escalation criteria.', 'explanation': 'The cough is mild and classified as non\u2011serious, so it does not trigger the system\u2019s escalation rules, which only act on serious or severe\u2011and\u2011related events. Therefore, the decision to not elevate this adverse event is consistent with the established criteria.'}",
+      "passed": true,
+      "latency_s": 3.87
+    },
+    {
+      "id": "AE-02",
+      "type": "ae_triage",
+      "answer": "No adverse event found with id AE-99999",
+      "passed": true,
+      "latency_s": 0.02
+    },
+    {
+      "id": "AE-03",
+      "type": "ae_triage",
+      "answer": "{'escalate': False, 'rule_reason': 'Does not meet serious/severe-and-related escalation criteria.', 'explanation': '(No explanation generated; see rule_reason above.)'}",
+      "passed": true,
+      "latency_s": 5.08
+    },
+    {
+      "id": "AE-04",
+      "type": "ae_triage",
+      "answer": "{'escalate': False, 'rule_reason': 'Does not meet serious/severe-and-related escalation criteria.', 'explanation': '(No explanation generated; see rule_reason above.)'}",
+      "passed": true,
+      "latency_s": 5.03
+    },
+    {
+      "id": "SIM-01",
+      "type": "compound_similarity",
+      "answer": "{'reference': {'compound_id': 'CMP-0001', 'compound_name': 'VLX-1000', 'target_protein': 'JAK2'}, 'similar': [{'compound_id': 'CMP-0133', 'compound_name': 'DKU-1132', 'target_protein': 'JAK2', 'therapeutic_area': 'Infectious Disease', 'distance': 0.324}, {'compound_id': 'CMP-0150', 'compound_name': 'PSA-1149', 'target_protein': 'JAK2', 'therapeutic_area': 'Metabolic Disease', 'distance': 0.394}, {'compound_id': 'CMP-0103', 'compound_name': 'SNF-1102', 'target_protein': 'JAK2', 'therapeutic_area': 'Respiratory', 'distance': 0.397}, {'compound_id': 'CMP-0063', 'compound_name': 'PSA-1062', 'target_protein': 'JAK2', 'therapeutic_area': 'Infectious Disease', 'distance': 0.436}, {'compound_id': 'CMP-0041', 'compound_name': 'DKU-1040', 'target_protein': 'VEGFR2', 'therapeutic_area': 'Cardiology', 'distance': 0.589}]}",
+      "passed": true,
+      "latency_s": 0.03
+    },
+    {
+      "id": "SIM-02",
+      "type": "compound_similarity",
+      "answer": "No compound with id CMP-9999",
+      "passed": true,
+      "latency_s": 0.01
+    },
+    {
+      "id": "SCOPE-01",
+      "type": "refusal",
+      "answer": "I can't provide individual clinical or dosing advice. This question is outside PharmaSense AI's scope -- please consult a qualified clinician.",
+      "passed": true,
+      "latency_s": 0.0
+    },
+    {
+      "id": "SCOPE-02",
+      "type": "refusal",
+      "answer": "I can't provide individual clinical or dosing advice. This question is outside PharmaSense AI's scope -- please consult a qualified clinician.",
+      "passed": true,
+      "latency_s": 0.0
+    },
+    {
+      "id": "ROUTE-01",
+      "type": "router",
+      "answer": "routed to adverse_event_triage",
+      "passed": true,
+      "latency_s": 8.47
+    },
+    {
+      "id": "ROUTE-02",
+      "type": "router",
+      "answer": "routed to compound_full_picture",
+      "passed": true,
+      "latency_s": 21.17
+    }
+  ]
+}

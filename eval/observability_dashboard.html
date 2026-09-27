@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>PharmaSense AI - Observability</title>
+<style>
+body { font-family: -apple-system, Arial, sans-serif; margin: 2rem; color: #1a1a1a; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+th { background: #f4f4f4; }
+.stat { display: inline-block; margin-right: 2rem; font-size: 1.1rem; }
+.stat b { display: block; font-size: 1.6rem; }
+</style></head><body>
+<h1>PharmaSense AI - Observability Dashboard</h1>
+<div class="stat"><b>74</b>Total LLM calls</div>
+<div class="stat"><b>4.1%</b>Error rate</div>
+<div class="stat"><b>$0.0</b>Total cost</div>
+<div class="stat"><b>0</b>Escalations</div>
+<h2>Per-agent breakdown</h2>
+<table><tr><th>Agent</th><th>Calls</th><th>Tokens in</th><th>Tokens out</th><th>Cost</th><th>Avg latency</th></tr>
+<tr><td>ae_triage</td><td>4</td><td>776</td><td>1804</td><td>$0.0</td><td>4684ms</td></tr><tr><td>eval_judge</td><td>25</td><td>12101</td><td>5316</td><td>$0.0</td><td>4326ms</td></tr><tr><td>literature_agent</td><td>12</td><td>8311</td><td>2032</td><td>$0.0</td><td>5096ms</td></tr><tr><td>report_writer</td><td>1</td><td>325</td><td>691</td><td>$0.0</td><td>3030ms</td></tr><tr><td>router</td><td>2</td><td>526</td><td>295</td><td>$0.0</td><td>3142ms</td></tr><tr><td>sql_agent</td><td>30</td><td>12411</td><td>7350</td><td>$0.0</td><td>1963ms</td></tr></table>
+<h2>Recent escalations</h2>
+<table><tr><th>Time</th><th>Event</th><th>Trial</th><th>Reason</th></tr>
+<tr><td colspan=4>No escalations logged yet.</td></tr></table>
+</body></html>

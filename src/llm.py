@@ -7,23 +7,18 @@ from config import ROOT, LLM_LOG_PATH
 
 load_dotenv(ROOT / ".env")
 
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = os.getenv("GROQ_API_KEY")
 if not API_KEY:
-    raise RuntimeError("GEMINI_API_KEY not found. Check that .env is in the project root.")
+    raise RuntimeError("GROQ_API_KEY not found. Check that .env is in the project root.")
 
-# Gemini exposes an OpenAI-compatible endpoint, so we reuse the openai package.
-_client = OpenAI(
-    api_key=API_KEY,
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-)
+# Groq exposes an OpenAI-compatible endpoint, so we reuse the openai package.
+_client = OpenAI(api_key=API_KEY, base_url="https://api.groq.com/openai/v1")
 
-# Free tier covers the Flash models. Check aistudio.google.com for current model names.
-DEFAULT_MODEL = os.getenv("PHARMASENSE_MODEL", "gemini-2.0-flash")
-
+DEFAULT_MODEL = os.getenv("PHARMASENSE_MODEL", "openai/gpt-oss-20b")
 # USD per 1M tokens. Fill in from Google's pricing page if you move to a paid tier.
 PRICING = {
-    "gemini-2.0-flash": {"in": 0.0, "out": 0.0},
-    "gemini-1.5-flash": {"in": 0.0, "out": 0.0},
+    "openai/gpt-oss-20b": {"in": 0.0, "out": 0.0},
+    "openai/gpt-oss-120b": {"in": 0.0, "out": 0.0},
 }
 
 BASE_SYSTEM = (
